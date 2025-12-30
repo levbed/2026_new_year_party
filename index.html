@@ -267,13 +267,12 @@
 
         <div class="hr"></div>
 
-        <h2>Soft prompts (optional)</h2>
+        <div class="hr"></div>
         <div class="quote" id="promptBox">“In another life, I would have…”</div>
         <div class="btnrow">
           <button id="newPromptBtn" type="button">New prompt</button>
-          <button id="copyPromptBtn" type="button">Copy</button>
         </div>
-        <p class="mini">If you feel like it, grab a card at the party. If not — ignore it completely.</p>
+        <p class="mini">If you feel like it, grab a card at the party.</p>
 
         <div class="hr"></div>
 
@@ -373,7 +372,6 @@
     // Prompts
     const promptBox = document.getElementById("promptBox");
     const newPromptBtn = document.getElementById("newPromptBtn");
-    const copyPromptBtn = document.getElementById("copyPromptBtn");
 
     function newPrompt(){
       const p = prompts[Math.floor(Math.random() * prompts.length)];
@@ -381,16 +379,6 @@
     }
 
     newPromptBtn.addEventListener("click", newPrompt);
-    copyPromptBtn.addEventListener("click", async () => {
-      try{
-        await navigator.clipboard.writeText(promptBox.textContent.replace(/[“”]/g, '"'));
-        copyPromptBtn.textContent = "Copied";
-        setTimeout(() => copyPromptBtn.textContent = "Copy", 900);
-      }catch(e){
-        copyPromptBtn.textContent = "Copy failed";
-        setTimeout(() => copyPromptBtn.textContent = "Copy", 900);
-      }
-    });
 
     renderMenu();
     newPrompt();
